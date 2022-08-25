@@ -4,6 +4,7 @@ import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
   state: {
+    users:null,
     user:null,
     token:null,
     topics:null,
@@ -13,6 +14,9 @@ export default createStore({
   getters: {
   },
   mutations: {
+    SetUsers(state,users){
+      state.user = users
+     },
     SetUser(state,user){
      state.user = user
     },
@@ -29,7 +33,18 @@ export default createStore({
       state.comments = comments
      }
   },
-  actions: {
+  actions: {   
+     ShowUsers:async (context)=>{
+    const res = await fetch("https://capstone-debate.herokuapp.com/users",{
+      method:"GET",
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    const UsersArray = await res.json();
+    console.log(UsersArray);
+    context.commit("SetUsers",UsersArray);
+  },
     Login: async (context,payload)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/users/login",{
         method:"POST",
@@ -86,12 +101,12 @@ export default createStore({
         name:"Topics"
       })
     },
-    AddTopic:async (payload)=>{
+    AddTopic:async (context,Land)=>{
+        console.log(Land);
       const res = await fetch("https://capstone-debate.herokuapp.com/topics",{
         method:"POST",
         body:JSON.stringify({
-        Topic:payload.Topic,
-        topic_answers:payload.topic_answers
+        Topic:Land.Topic
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
