@@ -20,8 +20,8 @@
         </table>
         <H1>Users</H1>
 
-        <div v-if="Lords">
-       <table v-for="user in Lords" :key="user.user_id" >
+        <div v-if="Debaters">
+       <table v-for="user in Debaters" :key="user.user_id" >
        <tr>
         <th>#</th>
         <th>UserName</th>
@@ -72,7 +72,7 @@ export default {
         topics() {
             return this.$store.state.topics
         },
-        users() {
+           Debaters() {
               return this.$store.state.users
         }
     },
@@ -88,7 +88,7 @@ export default {
             })
         },
         Look(){
-             console.log(users);
+             console.log(this.Debaters);
         }
     }
     

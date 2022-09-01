@@ -1,48 +1,72 @@
 <template>
-    <div v-if="topic">
-        <div v-for="item in topic" :key="item.topic_id" class="topic" >
-          <h1>{{item.Topic}}</h1>
-          <div class="box">
-              <div class="for">
-                  <label for="for" >For topic</label>
-                  <input type="checkbox" name="for" id="for" v-model="right">
-                  {{right}}
-                  </div>
-         <div class="for">
-                  <label for="for" >Against topic</label>
-                  <input type="checkbox" name="for" id="for" v-model="left">
-                  {{left}}
-                  </div>
-            </div>
-          </div>
-        <div class="comments">
-            Comments
-            <div v-if="comments">
-            <div v-for="comment in comments" :key="comment.comment_id">
-            <p>{{comment.comment}}</p>
-            </div>
-            </div>
-            <div v-else>
-                Be the First to Comments to this topic
-            </div>
+    <section id="SingleTopic" >
+        <div v-if="topic" class="border border-3 border-success" >
+            <div v-for="item in topic" :key="item.topic_id" class="topic" >
+                <div class="mb-3 p-1" >
+                    <h1 class="text-white pb-0 ">{{item.Topic}}</h1>
+                    <span class="underline1 d-block bg-success mx-auto "></span>
+                </div>
+              <p class="text-success">
+                  Tick To Vote(tick then click the box)
+              </p>
+              <div class="box border border-success  p-2">
+                  <div  @click="AddVote_For(item.for_topic)" :class="{'fored': !good,'for':good}" class="border border-primary">
+                      <label for="for" >For topic</label>
+                      <input type="radio" name="for" id="for" v-model="right">
+                      {{item.for_topic}}
+                      {{right}}
+                      </div>
+                      <div></div>
+             <div  @click="AddVote_Against(item.Against_topic)" :class="{'Againsted': !bad,'for':bad}" class="border border-danger">
+                      <label for="for" >Against topic</label>  
+                      <input type="radio" name="for" id="Against" v-model="left">
+                       {{item.Against_topic}}
+                       {{left}}
+                      </div>
+                </div>
+       
+              </div>
+            <div class="comments my-5">
+                <h1 class="text-white">
+                  Comments
+                  <span class="underline d-block bg-success mx-auto "></span> 
+                </h1>
+                <div v-if="comments">
+                <div v-for="comment in comments" :key="comment.comment_id" class="comments border rounded p-1 ">
+                    <div class="border border-success ">
+                        {{comment.Username}}
+                        <div class="comment bg-success w-100 h-100">
 
-            <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" id="float" v-model="comment"></textarea>
-             <label for="floatingTextarea">Comments</label>
+                            <p>{{comment.comment}}</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div v-else>
+                    Be the First to Comments to this topic
+                </div>
+    
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a comment here" id="float" v-model="comment"></textarea>
+                 <label for="floatingTextarea">Comments</label>
+                </div>
+                <button @click="Send" class="btn btn-info">Send</button>
             </div>
-            <button @click="Send" class="btn btn-info">Send</button>
+            
         </div>
-        
-    </div>
+    </section>
 </template>
 <script>
 export default {
 
     data(){
        return{
-        right:false,
-        left:false,
-        comment:""
+        right:"",
+        left:"",
+        comment:"",
+        Voted:false,
+        good:false,
+        bad:false
         
        }
     },
@@ -64,21 +88,91 @@ export default {
         }
     },
     methods:{
-        changeJ(){
-             JSON.parse(this.topic.topic_answers)
-        },
         Send(){
             this.$store.dispatch("AddComment",{
                 comment:this.comment,
                 user_id:this.Debater.user_id,
                 topic_id:this.$route.params.id
             })
+        },
+         async AddVote_For(For){
+            !this.good
+            if(this.right === "on" && (!this.Voted || this.bad)){
+                this.bad =  false
+                this.Voted = true
+                const Not =  ++For
+                this.AddVote(this.Voted,Not,this.$route.params.id)
+           
+            console.log(Not);
+            // window.location.reload();
+            }else {
+           this.Voted = false
+          }
+         },
+         AddVote_Against(Against){
+             !this.bad
+            if(this.left === "on" && (!this.Voted || this.good)){
+                this.good = false
+                this.Voted = true
+                const Mon = ++Against
+               this.AddVote1(this.Voted,Mon,this.$route.params.id)
+     
+            console.log(Mon);
+            }else {
+           this.Voted = false
+          }
+        },
+        AddVote:async (context,payload,id)=>{
+          console.log(id);
+          const res = await fetch(`https://capstone-debate.herokuapp.com/topics/${id}/for_topic`,{
+            method:"PUT",
+            body:JSON.stringify({
+             for_topic:payload
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }) 
+          .then(res => res.json())
+          .then(vote_added=>{
+            console.log(vote_added)
+            //  window.location.reload();
+          })
+   
+        },
+        AddVote1:async (context,payload,id)=>{
+          const res = await fetch(`https://capstone-debate.herokuapp.com/topics/${id}/Against_topic`,{
+            method:"PUT",
+            body:JSON.stringify({
+             Against_topic:payload
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }) 
+          .then(res => res.json())
+          .then(vote1_added=>{
+            console.log(vote1_added)
+            // window.location.reload();
+          })
+        
         }
-    }
+   
     
+
+    }
 }
 </script>
-<style >
+<style scoped>
+    .comments{
+        width: fit-content;
+        margin: auto ;
+    }
+section#SingleTopic{
+        background-color: black;
+        height: 100vh;
+}
+
     label{
         margin-right: 10px;
     }
@@ -88,6 +182,18 @@ export default {
         padding: 10px;
         width: fit-content;
     } 
+    .fored{
+        color:blue;
+        border:1px solid black;
+        padding: 10px;
+        width: fit-content;
+    }
+    .Againsted{
+        color:red;
+        border:1px solid black;
+        padding: 10px;
+        width: fit-content;
+    }
     .box{
         margin: auto; 
         display: flex;
@@ -102,4 +208,12 @@ export default {
         max-width:30vw;
         width: 100%;
     }
+    .underline1{
+    width:30vw;
+    height: 3px;
+  }
+  .underline{
+    width:10vw;
+    height: 3px;
+  }
 </style>

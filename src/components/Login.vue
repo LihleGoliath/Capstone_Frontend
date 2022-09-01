@@ -1,19 +1,12 @@
 <template >
-    <div>
-
-        <form @submit.prevent="Login">
-            <div class="input-group">
-  <span class="input-group-text">Email and Password</span>
-  <input type="email" aria-label="Email" class="form-control" v-model="email" required>
-  <input type="password" aria-label="Password" class="form-control" v-model="password" required>
-</div>
-  {{email}}
-  {{password}}
-
-<button type="submit">Login</button>
-<div v-if="token">
-    <button @click="Verify">Browse</button>
-</div>
+    <div class="card  p-3 bg-success">
+        <form @submit.prevent="Login" class="d-flex flex-column m-auto gap-1 form">
+  <input type="email" aria-label="Email"  v-model="email" placeholder="Email" required>
+  <input type="password" aria-label="Password"  v-model="password"  placeholder="Password" required>
+  <button type="submit" class="btn btn-success m-auto">Login</button>
+     <div v-if="token">
+    <button @click="Verify" class="btn btn-success">Browse</button>
+  </div>
         </form>
         
     </div>
@@ -44,6 +37,25 @@ export default {
     }
 }
 </script>
-<style lang="">
+<style  scoped>
+
+.card{
+    margin: auto;
+    width:80%;
+ border-radius:0;
+}
+ input{
+    width:40vw;
+    max-width: 100%;
+    height: 5vh;
+    padding: 10px;
+ }
+@media only screen and  (max-width: 500px){
+
+}  
+ .btn:hover{
     
+    color: white;
+    background-color: black;
+ } 
 </style>

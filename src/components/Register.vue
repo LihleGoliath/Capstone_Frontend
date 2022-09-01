@@ -1,18 +1,18 @@
 <template >
-    <div>
-       <form @submit.prevent="Register">
-       <div class="inputs" id="important">
-           <input type="text" name="Username" id="Username" class="from-control" v-model="Username" required>
-           {{Username}}
-           <input type="email" name="email" id="email" class="from-control" v-model="email" required>
+    <div class="card p-3 bg-success">
+       <form @submit.prevent="Register" class="d-flex flex-column gap-1 m-auto">
+        <input type="text" name="Username" id="Username"  v-model="Username" placeholder="Username" required>
+            {{Username}}
+           <input type="email" name="email" id="email"  v-model="email" placeholder="email" required>
            {{email}}
-           <input type="password" name="password" id="password" class="from-control" v-model="password" required>
+           <input type="password" name="password" id="password"  v-model="password" placeholder="password" required>
              {{password}}       
-       </div>
+
        <select name="Yoh" id="Yoh"  v-model="Yoh">
+       <option value="">Choose Role</option>
        <option value="user">debater</option>
        </select>
-         <button type="submit">Register</button>
+         <button type="submit" class="btn text-dark m-auto">Register</button>
        </form> 
     </div>
 </template>
@@ -38,6 +38,26 @@ export default {
     }
 }
 </script>
-<style lang="">
-    
+<style  scoped>
+.card{
+    margin: auto;
+    width:80%;
+ border-radius:0;
+}
+input{
+    width:40vw;
+    max-width: 100%;
+    height: 5vh;
+    padding: 10px;
+ } 
+
+ select{
+    width:40vw;
+    max-width: 100%;
+    padding:10px ;
+ }
+ .btn:hover{ 
+    color: white;
+    background-color: black;
+ } 
 </style>
