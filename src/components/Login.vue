@@ -50,8 +50,10 @@ export default {
     height: 5vh;
     padding: 10px;
  }
-@media only screen and  (max-width: 500px){
-
+@media only screen and  (max-width: 450px){
+input{
+ width: 100%;
+}
 }  
  .btn:hover{
     

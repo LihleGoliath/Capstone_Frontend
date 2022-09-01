@@ -45,7 +45,7 @@
     },
     methods:{
         Addview(item){
-           this.$store.commit("AddView",item) 
+           this.$store.commit("addView",item) 
         }
     }
  }

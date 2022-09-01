@@ -6,10 +6,10 @@
                     <h1 class="text-white pb-0 ">{{item.Topic}}</h1>
                     <span class="underline1 d-block bg-success mx-auto "></span>
                 </div>
-              <p class="text-success">
+              <p  v-if="Debater" class="text-success">
                   Tick To Vote(tick then click the box)
               </p>
-              <div class="box border border-success  p-2">
+              <div v-if="Debater" class="box border border-success  p-2">
                   <div  @click="AddVote_For(item.for_topic)" :class="{'fored': !good,'for':good}" class="border border-primary">
                       <label for="for" >For topic</label>
                       <input type="radio" name="for" id="for" v-model="right">
@@ -32,12 +32,13 @@
                   <span class="underline d-block bg-success mx-auto "></span> 
                 </h1>
                 <div v-if="comments">
-                <div v-for="comment in comments" :key="comment.comment_id" class="comments border rounded p-1 ">
-                    <div class="border border-success ">
-                        {{comment.Username}}
+                <div v-for="comment in comments" :key="comment.comment_id" class="comments border rounded p-1 my-3">
+                    <div class="border border-success d-flex flex-column w-100">
+                        <img :src="comment.user_image" alt="">
+                        <span class="text-white text-start">{{comment.Username}}</span>
                         <div class="comment bg-success w-100 h-100">
 
-                            <p>{{comment.comment}}</p>
+                            <p class="text-white">{{comment.comment}}</p>
                         </div>
                     </div>
                 </div>
@@ -45,12 +46,14 @@
                 <div v-else>
                     Be the First to Comments to this topic
                 </div>
-    
-                <div class="form-floating">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="float" v-model="comment"></textarea>
-                 <label for="floatingTextarea">Comments</label>
-                </div>
-                <button @click="Send" class="btn btn-info">Send</button>
+                 <div v-if="Debater">
+
+                     <div class="form-floating">
+                       <textarea class="form-control border border-success" placeholder="Leave a comment here" id="float" v-model="comment"></textarea>
+                      <label for="floatingTextarea">Comments</label>
+                     </div>
+                     <button @click="Send" class="btn btn-info">Send</button>
+                 </div>
             </div>
             
         </div>
@@ -165,7 +168,8 @@ export default {
 </script>
 <style scoped>
     .comments{
-        width: fit-content;
+        width: 50vw;
+  
         margin: auto ;
     }
 section#SingleTopic{

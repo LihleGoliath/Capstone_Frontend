@@ -8,20 +8,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-start text-end ">
-        <div v-if="user" class="d-md-flex ">    
         <li class="nav-item">
           <router-link class="nav-link" to="/about">About</router-link>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <router-link class="nav-link" to="/Topics">Topics</router-link>
         </li>
+        <div v-if="user" class="d-md-flex ">    
          <li class="nav-item">
           <router-link class="nav-link" to="/User">User</router-link>
         </li>
+        <div v-if="user_type === 'admin'">
+          <li class="nav-item">
+           <router-link class="nav-link" to="/about">About</router-link>
+         </li>
+        </div>
+        <li class="nav-item">
+         <button class="btn btn-primary" @click="logout">Log Out</button>
+        </li>
             </div>
-         <!-- <li class="nav-item">
-          <router-link class="nav-link" to="/about">About</router-link>
-        </li> -->
       </ul>
     </div>
 
@@ -33,9 +38,27 @@
 </template>
 <script>
 export default {
+  mounted(){
+   this.User_Type_Looker()
+  },
 computed:{
   user(){
     return this.$store.state.user
+  }
+},
+data(){
+  return{
+        user_type:null
+  }
+},
+methods:{
+  logout(){
+    this.$store.commit("LogOut")
+  },
+  User_Type_Looker(){
+    if(this.user){
+      this.user_type = this.user.user_type
+    }
   }
 }
 }

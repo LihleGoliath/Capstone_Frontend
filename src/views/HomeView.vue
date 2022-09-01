@@ -24,16 +24,16 @@
    
 </section>
 
-<span class="hr d-block bg-success vw-100  ">
+<div class="hr d-block bg-success vw-100  ">
   <strong>
    <h1 class="text-white pt-3"> "Freedom is hammered out on the anvil of discussion, dissent, and debate"</h1>
   </strong>
   <p class="text-white text-end">by Hubert H. Humphrey</p>
-  </span>
+</div>
 <section id="Login/Register" class="login register d-flex justify-content-center align-items-center ">
-    <div class="forms rounded">
+    <div class="forms rounded border border-success p-2">
       <div class="tabs">
-        <button class="btn text-white" @click="toggle" >Login</button>
+        <button class="btn text-white " @click="toggle" >Login</button>
         <button class="btn text-white" @click="toggle">Register</button>
       </div>
       <div v-if="active" class="my-auto pb-3 h-100">
@@ -154,6 +154,9 @@ box-shadow: -10px 1px 5px 0px rgba(0,0,0,0.75);
   transition: all 3s ease;
 }  
 .hr{
-  height:12vh;
+  height:fit-content;
+
 }
+
+
 </style>

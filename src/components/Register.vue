@@ -51,6 +51,7 @@ input{
     padding: 10px;
  } 
 
+
  select{
     width:40vw;
     max-width: 100%;
@@ -60,4 +61,10 @@ input{
     color: white;
     background-color: black;
  } 
+ @media only screen and  (max-width: 450px){
+input{
+ width: 100%;
+}
+} 
+
 </style>

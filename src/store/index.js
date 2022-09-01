@@ -1,5 +1,4 @@
 import router from '@/router'
-import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import createPersistedState from "vuex-persistedstate";
 
@@ -34,11 +33,16 @@ export default createStore({
      SetComments(state,comments){
       state.comments = comments
      },
-     AddView(state,view){
-      state.views.unshift({...view}); 
+     addView(state,value){
+      console.log(value);
+      state.views.push(value); 
      },
      DelView(state,view){
       state.views.splice(view,1) 
+     },
+     LogOut(state){
+      state.user = null,
+      state.token = null
      }
   },
   actions: {   
@@ -52,6 +56,18 @@ export default createStore({
     const UsersArray = await res.json();
     console.log(UsersArray);
     context.commit("SetUsers",UsersArray);
+  },
+  UpdateUser:async (context,id,Update)=>{
+    console.log(id,Update);
+    const res = await fetch("https://capstone-debate.herokuapp.com/users/" + id,{
+      method:"PATCH",
+      body:JSON.stringify(Update),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    const UpdatedUser = await res.json();
+    console.log(UpdatedUser);
   },
     Login: async (context,payload)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/users/login",{
