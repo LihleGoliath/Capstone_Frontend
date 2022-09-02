@@ -103,8 +103,9 @@ export default createStore({
         },
       })
       .then(res => res.json())
-      .then(newUserdata=>{
-        console.log(newUserdata);
+      .then(newUserdata =>{
+        const User = await newUserdata
+        console.log(User);
       })
     },
     Verify:async (context,token)=>{
