@@ -7,12 +7,8 @@
     <div class="front text-white">#{{topic.topic_id}}</div>
 <div class="back text-white">{{topic.Topic}}</div>
 </div>
- </div>
-
-
-
-
-    <div v-if="topics">
+ </div> 
+     <div v-if="topics">
         <div v-for="topic in topics" :key="topic.topic_id" class="topics">
         <div class="container border border-white rounded my-2 bg-success p-1 my-3" >
             <div class="d-flex justify-content-between"> 
@@ -26,6 +22,9 @@
         </div>
         </div>
     </div>
+    <div v-else>
+        Loading...
+        </div>
      </section>
  </template>
  <script>

@@ -18,9 +18,9 @@
          <li class="nav-item">
           <router-link class="nav-link" to="/User">User</router-link>
         </li>
-        <div v-if="user_type === 'admin'">
+        <div v-if="user_type === 'admin'" class="mx-5">
           <li class="nav-item">
-           <router-link class="nav-link" to="/about">About</router-link>
+           <router-link class="nav-link" to="/Admin">Tables</router-link>
          </li>
         </div>
         <li class="nav-item">
@@ -48,7 +48,7 @@ computed:{
 },
 data(){
   return{
-        user_type:null
+        user_type:''
   }
 },
 methods:{
@@ -58,6 +58,7 @@ methods:{
   User_Type_Looker(){
     if(this.user){
       this.user_type = this.user.user_type
+
     }
   }
 }
@@ -81,7 +82,12 @@ methods:{
     .logo:hover{
     color: white;
     }
- ul li.router-link-exact-active {
-  color: #42b983;
+ a.router-link-active {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #42b983;
+}
+a:hover{
+  background-color: #42b983;
 }
 </style>

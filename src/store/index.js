@@ -10,7 +10,9 @@ export default createStore({
     topics:null,
     topic:null,
     comments:null,
-    views:[]
+    comment:null,
+    views:[],
+    auth:null
   },
   getters: {
   },
@@ -20,9 +22,17 @@ export default createStore({
      },
     SetUser(state,user){
      state.user = user
-    },
+    },  
+     SetUserUpdate(state,user){
+      state.user.Username = user.Username,
+      state.user.user_image = user.user_image
+
+     },
     SetToken(state,token){
       state.token = token
+     },
+     SetAuth(state,value){
+      state.auth = value
      },
      SetTopics(state,topics){
       state.topics = topics
@@ -32,6 +42,9 @@ export default createStore({
      },
      SetComments(state,comments){
       state.comments = comments
+     },
+     SetComment(state,comment){
+      state.comment = comment
      },
      addView(state,value){
       console.log(value);
@@ -43,31 +56,37 @@ export default createStore({
      LogOut(state){
       state.user = null,
       state.token = null
+     },
+     AuthReset(state){
+      state.auth = null
      }
   },
   actions: {   
-     ShowUsers:async (context)=>{
+     ShowUsers:async (context,token)=>{
     const res = await fetch("https://capstone-debate.herokuapp.com/users",{
       method:"GET",
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
+        'x-auth-token':`${token}`
       },
     })
     const UsersArray = await res.json();
     console.log(UsersArray);
     context.commit("SetUsers",UsersArray);
   },
-  UpdateUser:async (context,id,Update)=>{
-    console.log(id,Update);
-    const res = await fetch("https://capstone-debate.herokuapp.com/users/" + id,{
-      method:"PATCH",
-      body:JSON.stringify(Update),
+  UpdateUser:async (context,load)=>{
+    console.log(load);
+    const res = await fetch("https://capstone-debate.herokuapp.com/users/" + load.id,{
+      method:"PUT",
+      body:JSON.stringify(load.Updated),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
+        'x-auth-token':`${load.token}`
       },
     })
     const UpdatedUser = await res.json();
     console.log(UpdatedUser);
+    context.commit("SetUserUpdate",load.Updated)
   },
     Login: async (context,payload)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/users/login",{
@@ -82,10 +101,19 @@ export default createStore({
       })
       .then(res => res.json())
       .then(tokendata=>{
-        console.log(tokendata);
-        console.log(tokendata.token);
+     if(tokendata == "Email not found please register"){
+      console.log("Email not found");
+      context.commit("SetAuth",tokendata)
+     }else if(tokendata == "Password incorrect"){
+      console.log(tokendata);
+      console.log("Password Incorrect");
+      context.commit("SetAuth",tokendata)
+     }else{
+       console.log(tokendata);
+       console.log(tokendata.token);
   
-       context.commit("SetToken",tokendata.token)
+      context.commit("SetToken",tokendata.token)
+     }
       })
 
     },
@@ -104,7 +132,12 @@ export default createStore({
       })
       .then(res => res.json())
       .then(newUserdata=>{
-        console.log(newUserdata);
+        if(newUserdata == "Email Already Exists In Database"){
+          console.log(newUserdata);
+          context.commit("SetAuth",newUserdata)
+        }else{
+          console.log(newUserdata);
+        }
       })
     },
     Verify:async (context,token)=>{
@@ -125,7 +158,22 @@ export default createStore({
         name:"Topics"
       })
     },
-    AddTopic:async (context,Land)=>{
+    delUser:async (context,load)=>{
+      console.log(load);
+      const res = await fetch("https://capstone-debate.herokuapp.com/users/" + load.id,{
+        method:"DELETE",
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'x-auth-token':`${load.token}`
+        },
+      }) 
+      const deleted_user = await res.json();
+      console.log(deleted_user);
+      // if(deleted_user){
+      //   window.location.reload()
+      // }
+  },
+    AddTopic:async (context,Land,token)=>{
         console.log(Land);
       const res = await fetch("https://capstone-debate.herokuapp.com/topics",{
         method:"POST",
@@ -134,9 +182,10 @@ export default createStore({
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
+          'x-auth-token':`${token}`
         },
       }) 
-      const topic_added = res.json();
+      const topic_added = await res.json();
       console.log(topic_added);
     },
     ShowTopics:async (context)=>{
@@ -161,18 +210,22 @@ export default createStore({
       console.log(topicArray);
       context.commit("SetTopic",topicArray);
     },
-      DeleteTopic:async (id)=>{
-          const res = await fetch("https://capstone-debate.herokuapp.com/topics/" + id,{
+      delTopic:async (context,load)=>{
+          const res = await fetch("https://capstone-debate.herokuapp.com/topics/" + load.id,{
             method:"DELETE",
             headers: {
               'Content-type': 'application/json; charset=UTF-8',
+              'x-auth-token':`${load.token}`
             },
           }) 
-          const deleted_topic = res.json();
+          const deleted_topic = await res.json();
           console.log(deleted_topic);
+          if(deleted_topic){
+            window.location.reload()
+          }
    
       },
-    ShowComment:async (context,id)=>{
+    ShowComments:async (context,id)=>{
         const res = await fetch("https://capstone-debate.herokuapp.com/comments/topic/" + id,{
           method:"GET",
           headers: {
@@ -182,6 +235,18 @@ export default createStore({
         const comments_Array =await res.json();
         console.log(comments_Array);
         context.commit("SetComments",comments_Array);
+      },
+      ShowComment:async (context,token)=>{
+        const res = await fetch("https://capstone-debate.herokuapp.com/comments",{
+          method:"GET",
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'x-auth-token':`${token}`
+          },
+        })
+        const comment_Array = await res.json();
+        console.log(comment_Array);
+        context.commit("SetComment",comment_Array);
       },
       AddComment:async (content,payload)=>{
         const res = await fetch("https://capstone-debate.herokuapp.com/comments",{
@@ -199,15 +264,20 @@ export default createStore({
         const comment_added = res.json();
         console.log(comment_added);
       },
-      DeleteComment:async (id)=>{
-          const res = await fetch("https://capstone-debate.herokuapp.com/comments/" + id,{
+      delComment:async (context,load)=>{
+          const res = await fetch("https://capstone-debate.herokuapp.com/comments/" + load.id,{
             method:"DELETE",
             headers: {
               'Content-type': 'application/json; charset=UTF-8',
+              'x-auth-token':`${load.token}`
+
             },
           }) 
-          const deleted_comment = res.json();
+          const deleted_comment = await res.json();
           console.log(deleted_comment);
+          if(deleted_comment){
+            setTimeout( window.location.reload(),5000)           
+          }
         },
 
   },

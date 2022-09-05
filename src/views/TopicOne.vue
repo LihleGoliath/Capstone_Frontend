@@ -34,8 +34,10 @@
                 <div v-if="comments">
                 <div v-for="comment in comments" :key="comment.comment_id" class="comments border rounded p-1 my-3">
                     <div class="border border-success d-flex flex-column w-100">
-                        <img :src="comment.user_image" alt="">
-                        <span class="text-white text-start">{{comment.Username}}</span>
+                        <div class="image d-flex ">
+                          <img :src="comment.user_image" :alt="comment.user_id" class="img img-fluid ">
+                          <span class="text-white text-start ">{{comment.Username}}</span>
+                        </div>
                         <div class="comment bg-success w-100 h-100">
 
                             <p class="text-white">{{comment.comment}}</p>
@@ -57,6 +59,9 @@
             </div>
             
         </div>
+        <div v-else-if="!topic">
+        Loading...
+        </div>
     </section>
 </template>
 <script>
@@ -76,7 +81,7 @@ export default {
     props:["id"],
     mounted(){
         this.$store.dispatch("GetTopic",this.$route.params.id),
-        this.$store.dispatch("ShowComment",this.$route.params.id)
+        this.$store.dispatch("ShowComments",this.$route.params.id)
   
     },
     computed:{
@@ -174,7 +179,7 @@ export default {
     }
 section#SingleTopic{
         background-color: black;
-        height: 100vh;
+        height: fit-content;
 }
 
     label{
@@ -219,5 +224,16 @@ section#SingleTopic{
   .underline{
     width:10vw;
     height: 3px;
+  }
+
+  .image{
+    width:4vw;
+    height: 4vh;
+
+  }
+  .img{
+    width:100%;
+    height: 100%;
+    border-radius:20px;
   }
 </style>

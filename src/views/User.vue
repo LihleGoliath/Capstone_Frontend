@@ -1,6 +1,9 @@
 <template >
     <div v-if="user" class="div">
-        <button class="btn btn-success d-flex justify-content-"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
+      <div class="d-flex justify-content-between ">
+        <button class="btn btn-success "  data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
+        <button @click="DeleteACC" class="btn btn-danger">Delete Account</button>
+      </div>
     <section>
        <div class="Userinfo d-flex mb-5">
         <div class="user_image bg-primary ">
@@ -24,10 +27,12 @@
     </section>
       
     </div>
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary">
-  Launch demo modal
-</button>
+    <div v-else-if="!user">
+      Not Login
+    </div>
+    <div v-else>
+        Loading...
+        </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -39,7 +44,7 @@
       </div>
       <div class="modal-body">
         <form @submit.prevent="Update(user.user_id)">
-     <input type="text" name="Username" id="Username" v-model="user.Username" :placeholder="Username">
+     <input type="text" name="Username" id="Username" v-model="Username" placeholder="Username">
      <input type="text" name="user_image" id="user_image" v-model="user_image" placeholder="Url Image">
 <button type="submit">Update</button>
         </form>
@@ -50,6 +55,7 @@
 
 
 </template>
+
 <script>
 export default {
     computed:{
@@ -59,7 +65,12 @@ export default {
         views(){
           return  this.$store.state.views,
           console.log(this.$store.state.views);
+        },
+        token(){
+          return  this.$store.state.token,
+          console.log(this.$store.state.token);
         }
+
     },
     data(){
         return{
@@ -73,12 +84,23 @@ export default {
                 Username:this.Username,
                 user_image:this.user_image
             }
-            this.$store.dispatch("UpdateUser",id,payload)
+            this.$store.dispatch("UpdateUser",{
+              id:id,
+              Updated:payload,
+              token:this.token
+            })
+        },
+        DeleteACC(){
+              console.log(id,this.token);
+          this.$store.dispatch("delTopic",{
+            id:id,token:this.token
+          })
         }
     }
 }
 </script>
-<style >
+
+<style scoped>
 .Userinfo{
     padding: 10px;
 }
@@ -98,5 +120,10 @@ export default {
     .div{
   background-color: black;
     height: 100vh;
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
     }
 </style>

@@ -14,26 +14,55 @@
        </select>
          <button type="submit" class="btn text-dark m-auto">Register</button>
        </form> 
+       <div v-if="nothing">
+       <div v-if="auth">
+        <h1 class="container bg-danger text-drak">
+       {{auth}}
+     </h1>
+       </div>
+       <div v-else-if="!auth">
+        Loading...
+       </div>
+       <div v-else>
+           <div v-if="registered" class="feedback">
+            <p class="text-success">U have successfully registered</p>
+            <H1 class="text-success">Please Login</H1>
+           </div>  
+           <div v-else>
+             Loading...
+           </div> 
+       </div>
     </div>
+        </div>
 </template>
 <script>
 export default {
+    computed:{
+     auth(){
+        return this.$store.state.auth
+     }
+    },
     data(){
         return{
             Username:"",
             email:"",
             password:"",
-            Yoh:""
+            Yoh:"",
+            registered:false,
+            nothing:false
         }
     },
     methods:{
         Register(){
+            this.nothing = true
             this.$store.dispatch("Register",{
                 Username:this.Username,
                 email:this.email,
                 password:this.password,
                 user_type:this.Yoh
             })
+
+            this.registered = true
         }
     }
 }
@@ -66,5 +95,8 @@ input{
  width: 100%;
 }
 } 
+.feedback{
+    background-color: black;
+}
 
 </style>

@@ -8,6 +8,9 @@
 import Navbar from "./components/Navbar.vue";
 
 export default{
+  mounted(){
+    setTimeout(this.Reset,1000)
+  },
   data(){
     return{
 
@@ -16,7 +19,12 @@ export default{
   components:{
     Navbar,
     Navbar
-}
+},
+methods: {
+  Reset(){
+    this.$store.commit("AuthReset")
+  }
+},
 }
 </script>
 

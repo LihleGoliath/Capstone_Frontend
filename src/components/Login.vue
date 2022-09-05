@@ -4,9 +4,24 @@
   <input type="email" aria-label="Email"  v-model="email" placeholder="Email" required>
   <input type="password" aria-label="Password"  v-model="password"  placeholder="Password" required>
   <button type="submit" class="btn btn-success m-auto">Login</button>
+  <div v-if="!nothing">
      <div v-if="token">
-    <button @click="Verify" class="btn btn-success">Browse</button>
+        <P>Successfully Login Debater</P>
+    <button @click="Verify" class="btn btn-success">Browse Topics</button>
   </div>
+
+ 
+  
+      
+        <div v-else-if="auth">
+           <h1 class="container bg-danger text-drak">
+             {{auth}}
+           </h1>
+        </div>
+        <div v-else-if="!auth">
+      Loading...
+        </div>
+    </div>
         </form>
         
     </div>
@@ -16,16 +31,21 @@ export default {
    computed:{
       token(){
         return  this.$store.state.token
+      },
+      auth(){
+        return  this.$store.state.auth
       }
     },
     data(){
         return{
             email:"",
-            password:""
+            password:"",
+            nothing:true
         }
     },
     methods:{
         Login(){
+            this.nothing = false
             this.$store.dispatch("Login",{
                 email:this.email,
                 password:this.password
