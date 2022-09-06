@@ -1,6 +1,6 @@
 <template >
-    <div class="card p-3 bg-success">
-       <form @submit.prevent="Register" class="d-flex flex-column gap-1 m-auto">
+    <div class="card p-3 bg-success ">
+       <form @submit.prevent="Register" class="d-flex flex-column gap-1 m-auto w-100">
         <input type="text" name="Username" id="Username"  v-model="Username" placeholder="Username" required>
             {{Username}}
            <input type="email" name="email" id="email"  v-model="email" placeholder="email" required>

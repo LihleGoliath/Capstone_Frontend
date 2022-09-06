@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-dark w-100vw">
   <div class="container">
-    <router-link to="/" class="navbar-brand text-success logo" href="#">CDS</router-link>
+    <router-link to="/" class="navbar-brand text-white logo" href="#">CDS</router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,6 +13,9 @@
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/Topics">Topics</router-link>
+        </li> 
+        <li class="nav-item">
+          <router-link class="nav-link" to="/Contact">Contact</router-link>
         </li>
         <div v-if="user" class="d-md-flex ">    
          <li class="nav-item">
@@ -71,6 +74,7 @@ methods:{
       display: flex;
       justify-content: space-evenly;
     }
+  
     .line{
       display: block;
       width: 100vw;
@@ -83,7 +87,7 @@ methods:{
     color: white;
     }
  a.router-link-active {
-  color: white;
+  color: rgb(19, 181, 19);
   text-decoration: underline;
   text-decoration-color: #42b983;
 }

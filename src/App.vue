@@ -1,11 +1,15 @@
-<template>
-<Navbar/>
-  <router-view/>
+<template >
+  <div>
+    <Navbar></Navbar>
+  <router-view></router-view>
+  <Footer></Footer>
+  </div>
 </template>
 
 <script>
   
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 export default{
   mounted(){
@@ -18,7 +22,7 @@ export default{
   },
   components:{
     Navbar,
-    Navbar
+    Footer
 },
 methods: {
   Reset(){
@@ -52,5 +56,6 @@ nav a {
   padding:0;
   margin:0;
   box-sizing: border-box;
+
 }
 </style>

@@ -32,14 +32,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <form @submit.prevent="UpdateTopic">
-       <input type="text" name="" id="" class="form-control" :placeholder="topic.Topic">
+       <form @submit.prevent="UpdateTopic(topic.topic_id)">
+       <input type="text" name="TopicUpdate" id="TopicUpdate" class="form-control" :placeholder="topic.Topic" v-model="TopicUpdate">
          <button type="submit" class="btn btn-primary">Update</button>
        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -92,15 +88,15 @@
        </table>
          </div>
          <div v-else>
-        Loading...
+         <P>Loading...</P> 
         </div>
   
         </div> 
         <div v-else-if="!user_type === 'admin'">
-        Not Admin
+        Note:"U Ain't The Admin braaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!?!?!!!!!"
         </div>
         <div  v-else>
-          Loading...
+         <P>Loading...</P> 
         </div>
    
     <!-- Modal -->
@@ -160,13 +156,23 @@ export default {
     data(){
         return{
             Topic:"",
-            user_type:null
+            user_type:null,
+            TopicUpdate:""
         }
     },
     methods:{
         AddTopic(){
             this.$store.dispatch("AddTopic",{
-                Topic:this.Topic
+                Topic:this.Topic,
+                token:this.token
+            })
+        },
+        UpdateTopic(id){
+            this.$store.dispatch("UpdateTopic",{
+                Topic:this.TopicUpdate,
+                token:this.token,
+                id:id
+
             })
         },
         Look(){

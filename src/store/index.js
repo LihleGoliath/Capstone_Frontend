@@ -90,7 +90,7 @@ export default createStore({
   },
     Login: async (context,payload)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/users/login",{
-        method:"POST",
+        method:"PATCH",
         body:JSON.stringify({
           email:payload.email,
           password:payload.password
@@ -188,6 +188,21 @@ export default createStore({
       const topic_added = await res.json();
       console.log(topic_added);
     },
+    UpdateTopic:async (context,Land)=>{
+      console.log(Land);
+    const res = await fetch("https://capstone-debate.herokuapp.com/topics/" + Land.id,{
+      method:"PATCH",
+      body:JSON.stringify({
+      Topic:Land.Topic
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        'x-auth-token':`${Land.token}`
+      },
+    }) 
+    const topic_added = await res.json();
+    console.log(topic_added);
+  },
     ShowTopics:async (context)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/topics",{
         method:"GET",

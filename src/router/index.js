@@ -31,7 +31,23 @@ const routes = [
     path: '/Admin',
     name: 'Admin',
     component: () => import('../views/Admin.vue')
+  },
+  {
+    path: '/Contact',
+    name: 'Contact',
+    component: () => import('../views/Contact.vue')
+  } ,
+  {
+    path: '/400s',
+    name: 'user errors',
+    component: () => import('../views/400page.vue')
+  },
+  {
+    path: '/500s',
+    name: 'sever errors',
+    component: () => import('../views/500page.vue')
   }
+  
 ]
 
 const router = createRouter({
