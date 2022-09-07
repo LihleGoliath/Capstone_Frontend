@@ -12,7 +12,8 @@ export default createStore({
     comments:null,
     comment:null,
     views:[],
-    auth:null
+    auth:null,
+    asc:false
   },
   getters: {
   },
@@ -59,7 +60,22 @@ export default createStore({
      },
      AuthReset(state){
       state.auth = null
-     }
+     },
+     sortTopicsByIndex: (state) => {
+      state.topics = state.topics.sort((a, b) => {
+        if (a.topic_id < b.topic_id) {
+          return -1;
+        }
+        if (a.topic_id > b.topic_id) {
+          return 1;
+        }
+        return 0;
+      });
+      if (!state.asc) {
+        state.topics.reverse();
+      }
+      state.asc = !state.asc;
+    }
   },
   actions: {   
      ShowUsers:async (context,token)=>{
