@@ -4,7 +4,7 @@
       
     </Profile>
     <div v-else-if="!user">
-      Not Login
+      <NotPage></NotPage>
     </div>
     <div v-else>
         Loading...
@@ -17,13 +17,14 @@
 
 <script>
 import Profile from '@/components/profile.vue';
+import NotPage from '@/components/NotPage.vue';
 export default {
     computed: {
         user() {
             return this.$store.state.user;
         },
       },
-    components: { Profile }
+    components: { Profile,NotPage }
 }
 </script>
 

@@ -92,11 +92,8 @@
         </div>
   
         </div> 
-        <div v-else-if="!user_type === 'admin'">
-        Note:"U Ain't The Admin braaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!?!?!!!!!"
-        </div>
         <div  v-else>
-         <P>Loading...</P> 
+          <NotPage></NotPage>
         </div>
    
     <!-- Modal -->
@@ -127,82 +124,83 @@
 
 </template>
 <script>
+import NotPage from '@/components/NotPage.vue'
 export default {
-    mounted(){
+    mounted() {
         this.$store.dispatch("ShowTopics"),
-        this.$store.dispatch("ShowUsers"),
-        this.$store.dispatch("ShowComment"),
-        this.User_Type_Looker()
+            this.$store.dispatch("ShowUsers"),
+            this.$store.dispatch("ShowComment"),
+            this.User_Type_Looker();
     },
-    computed:{
-      
+    computed: {
         topics() {
-            return this.$store.state.topics
+            return this.$store.state.topics;
         },
-           Debaters() {
-              return this.$store.state.users
+        Debaters() {
+            return this.$store.state.users;
         },
-           comments() {
-              return this.$store.state.comment
+        comments() {
+            return this.$store.state.comment;
         },
-           token() {
-              return this.$store.state.token
+        token() {
+            return this.$store.state.token;
         },
-        user(){
-        return this.$store.state.user
-        }
-
-    },
-    data(){
-        return{
-            Topic:"",
-            user_type:null,
-            TopicUpdate:""
+        user() {
+            return this.$store.state.user;
         }
     },
-    methods:{
-        AddTopic(){
-            this.$store.dispatch("AddTopic",{
-                Topic:this.Topic,
-                token:this.token
-            })
+    data() {
+        return {
+            Topic: "",
+            user_type: null,
+            TopicUpdate: ""
+        };
+    },
+    methods: {
+        AddTopic() {
+            this.$store.dispatch("AddTopic", {
+                Topic: this.Topic,
+                token: this.token
+            });
         },
-        UpdateTopic(id){
-            this.$store.dispatch("UpdateTopic",{
-                Topic:this.TopicUpdate,
-                token:this.token,
-                id:id
-
-            })
+        UpdateTopic(id) {
+            this.$store.dispatch("UpdateTopic", {
+                Topic: this.TopicUpdate,
+                token: this.token,
+                id: id
+            });
         },
-        Look(){
-             console.log(this.token);
+        Look() {
+            console.log(this.token);
         },
-        DelTopic(id){
-          console.log(id,this.token);
-          this.$store.dispatch("delTopic",{
-            id:id,token:this.token
-          })
+        DelTopic(id) {
+            console.log(id, this.token);
+            this.$store.dispatch("delTopic", {
+                id: id,
+                token: this.token
+            });
         },
-        DelUser(id){
-          console.log(id,this.token);
-          this.$store.dispatch("delUser",{
-            id:id,token:this.token
-          })
+        DelUser(id) {
+            console.log(id, this.token);
+            this.$store.dispatch("delUser", {
+                id: id,
+                token: this.token
+            });
         },
-        DelComment(id){
-          console.log(id);
-          this.$store.dispatch("delComment",{
-            id:id,token:this.token
-          })
+        DelComment(id) {
+            console.log(id);
+            this.$store.dispatch("delComment", {
+                id: id,
+                token: this.token
+            });
         },
-        User_Type_Looker(){
-         if(this.user){
-          this.user_type = this.user.user_type
-         }
+        User_Type_Looker() {
+            if (this.user) {
+                this.user_type = this.user.user_type;
+            }
         }
-    
-}
+    },
+    components: { NotPage }
 }
 </script>
 <style scoped>
