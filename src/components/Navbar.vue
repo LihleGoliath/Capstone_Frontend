@@ -17,7 +17,7 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/Contact">Contact</router-link>
         </li>
-        <div v-if="user" class="d-md-flex ">    
+        <div v-if="user" class=" d-sm-flex  gap-3">    
          <li class="nav-item">
           <router-link class="nav-link" to="/User">User</router-link>
         </li>
@@ -27,7 +27,7 @@
          </li>
         </div>
         <li class="nav-item">
-         <button class="btn btn-primary" @click="logout">Log Out</button>
+         <button class="btn btn-success" @click="logout">Log Out</button>
         </li>
             </div>
       </ul>

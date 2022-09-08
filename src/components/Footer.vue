@@ -4,21 +4,29 @@
         <div class="container w-100 ">
             <div class="row">
                 <div class="col-md-4 text-white">
-                    <p class="text-white">back to top</p>
-                    <p>Links</p>
-                    <p>Links</p>
-                    <p>Links</p>
+                    <p class="text-white">Relevant Socials</p>
+                    <p><a href="https://www.facebook.com/">https://www.facebook.com/</a></p>
+                    <p><a href="https://www.instagram.com/">https://www.instagram.com/</a></p>
+                    <p><a href="https://laracasts.com/discuss">https://laracasts.com/discuss</a></p>
                 </div>
                 <div class="col-md-4 text-white">
-                    <h1 class="text-center text-success">FOOTER</h1>
-                    <p> Copy Right Of 2022</p>
+                    <h1 class="text-center text-success">C.D.S.</h1>
+                    <p>Developed and designed</p>
                     <p>by Lihle</p>
                 </div>
-                <div class="col-md-4 text-white d-flex justify-content-center">
-                    <p><i class="fa-brands fa-square-github"></i></p> |
-                    <p><i class="fa-brands fa-codepen"></i></p> |
-                    <p><i class="fa-brands fa-linkedin"></i></p> |
-                    <p>icons</p> |
+                <div class="col-md-4 text-white d-flex justify-content-center gap-3">
+                    <a href="http://">
+                        <p><i class="fa-brands fa-square-github   fs-3 bg-success p-1 border rounded-circle"></i></p> 
+                    </a>
+                    <a href="http://">
+                        <p><i class="fa-brands fa-codepen  fs-3 bg-success p-1 border rounded-circle"></i></p> 
+                    </a>
+                    <a href="http://">
+                        <p><i class="fa-brands fa-linkedin  fs-3 bg-success p-1 border rounded-circle"></i></p>
+                    </a>
+                    <a href="http://">
+                        <p><i class="fa-solid fa-diagram-project fs-3 bg-success p-1 border rounded-circle"></i></p> 
+                    </a>
                 </div>
             </div>
          
@@ -40,6 +48,18 @@ export default {
       display: block;
       width: 100vw;
       height: 5px;
+    }
+    i{
+        cursor: pointer;
+    }
+    a{
+        color:white;
+    }
+    a:hover{
+        color:rgb(35, 146, 35)
+    }
+    a i:hover{
+        color:black;
     }
     
 </style>

@@ -185,9 +185,12 @@ export default createStore({
       }) 
       const deleted_user = await res.json();
       console.log(deleted_user);
-      // if(deleted_user){
-      //   window.location.reload()
-      // }
+      if(deleted_user){
+       router.push({
+        name: 'home'
+       })
+      }
+    
   },
     AddTopic:async (context,Land,token)=>{
         console.log(Land);
