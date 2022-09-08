@@ -21,16 +21,13 @@
      </h1>
        </div>
        <div v-else-if="!auth">
+        <div v-if="registered" class="feedback">
+         <p class="text-success">U have successfully registered</p>
+         <H1 class="text-success">Please Login</H1>
+        </div>  
+    </div>
+    <div v-else>
         Loading...
-       </div>
-       <div v-else>
-           <div v-if="registered" class="feedback">
-            <p class="text-success">U have successfully registered</p>
-            <H1 class="text-success">Please Login</H1>
-           </div>  
-           <div v-else>
-             Loading...
-           </div> 
        </div>
     </div>
         </div>
@@ -54,15 +51,15 @@ export default {
     },
     methods:{
         Register(){
-            this.nothing = true
+           
             this.$store.dispatch("Register",{
                 Username:this.Username,
                 email:this.email,
                 password:this.password,
                 user_type:this.Yoh
-            })
-
-            this.registered = true
+            }),
+            this.nothing = true,
+           this.registered = true
         }
     }
 }

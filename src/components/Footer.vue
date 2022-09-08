@@ -15,9 +15,9 @@
                     <p>by Lihle</p>
                 </div>
                 <div class="col-md-4 text-white d-flex justify-content-center">
-                    <p>icons</p> |
-                    <p>icons</p> |
-                    <p>icons</p> |
+                    <p><i class="fa-brands fa-square-github"></i></p> |
+                    <p><i class="fa-brands fa-codepen"></i></p> |
+                    <p><i class="fa-brands fa-linkedin"></i></p> |
                     <p>icons</p> |
                 </div>
             </div>
