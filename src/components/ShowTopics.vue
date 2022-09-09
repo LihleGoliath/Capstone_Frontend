@@ -13,8 +13,12 @@
 </template>
 <script>
 export default {
-    props:["topic"]
-    
+    props:["topic"],
+    methods: {
+        Addview(item) {
+            this.$store.commit("addView", item);
+        },
+    },
 }
 </script>
 <style>
@@ -27,5 +31,6 @@ export default {
     text-decoration: underline;
     text-decoration-color:white ;
  }
+ 
     
 </style>

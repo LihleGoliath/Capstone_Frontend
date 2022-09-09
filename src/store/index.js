@@ -1,5 +1,6 @@
 import router from '@/router'
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import vuejs from 'vue';
 import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
@@ -47,9 +48,9 @@ export default createStore({
      SetComment(state,comment){
       state.comment = comment
      },
-     addView(state,value){
-      console.log(value);
-      state.views.push(value); 
+     addView(state,Topic){
+       console.log(Topic);
+      state.views.push(Topic); 
      },
      DelView(state,view){
       state.views.splice(view,1) 

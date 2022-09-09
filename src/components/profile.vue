@@ -1,8 +1,8 @@
 <template >
     <div class="div1">
         <div class="d-flex justify-content-between ">
-        <button class="btn btn-success "  data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
-        <button  class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Delete Account</button>
+        <button class="btn btn-success mx-2 my-2"  data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
+        <button  class="btn btn-danger  mx-2 my-2"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Delete Account</button>
       </div>
     <section>
        <div class="Userinfo d-flex mb-5">
