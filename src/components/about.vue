@@ -1,7 +1,11 @@
 <template>
+  <p class="fs-4">
+    This  webapp is inspired by the great knowledge of the best debaters the world had  to offer to are life dedication we present All are findings on the most interesting Topics we offer. So I say enjoy this great debate web app.
+  </p>
         <p class="text-white">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed impedit veniam mollitia rem facilis distinctio nihil repudiandae, possimus unde, modi labore magnam? Asperiores ipsam velit animi deserunt nemo ex fuga labore, magni ullam placeat incidunt esse saepe recusandae in consequatur ipsa distinctio officiis neque reprehenderit dolorem. Nulla eos officiis distinctio, vel deserunt earum est ipsam accusamus iure, fugit enim! Tempora possimus eum nesciunt aperiam repellendus rerum fugiat ducimus illo quibusdam, ullam laudantium nulla? Ipsa vel excepturi odio eius officiis quas nobis asperiores, ducimus accusantium omnis velit accusamus fugit praesentium ipsum repellendus voluptatem incidunt sunt et reiciendis facilis dolore! A doloribus asperiores nam, itaque saepe quo perspiciatis minima, ipsa, tempore nostrum voluptates? Blanditiis vero harum atque ut repudiandae ipsam dolores, consequuntur natus reiciendis voluptas dolore quo iusto tempora eum adipisci non cumque numquam aliquam accusantium! Aliquam, praesentium omnis ipsum fuga accusantium dolores, unde delectus error vero dolorum fugiat doloremque fugit accusamus autem? Ducimus perspiciatis fuga nemo ratione, voluptate vitae consectetur atque enim temporibus inventore! Commodi quis obcaecati aliquid error facilis sint iste aperiam voluptatem modi natus dolore at nostrum amet itaque magni rerum assumenda repudiandae earum maxime officiis odio nobis, ad sit suscipit. Cumque voluptates a praesentium molestiae cupiditate, eligendi assumenda?
-      </p>
+          Quote:
+          '  The "First Great Debate" also known as the "Realist-Idealist Great Debate"[3] was a dispute between idealists and realists which took place in the 1930s and 1940s[4] and which was fundamentally about how to deal with Nazi Germany.[5] Realist scholars emphasized the anarchical nature of international politics and the need for state survival. Idealists emphasized the possibility of international institutions such as the League of Nations. However, some have argued that defining the debate between realism and idealism in terms of a great debate is a misleading caricature and so described the "great debate" as a myth.  '
+       </p>
 </template>
 <script>
 export default {

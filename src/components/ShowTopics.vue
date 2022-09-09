@@ -1,8 +1,8 @@
 <template >
 
        <div class="container border border-white rounded my-2 bg-success p-1 my-3" >
-            <div class="d-flex justify-content-between"> 
-                <h2 class="text-start">#{{topic.topic_id}}</h2> <button class="btn btn-success " @click="Addview(topic)"> Add view</button>
+            <div  class="d-flex justify-content-between"> 
+                <h2 class="text-start">#{{topic.topic_id}}</h2> <button v-if="user" class="btn btn-success " @click="Addview(topic)"> Add view</button>
             </div>
             <router-link class="topic" :to="{name:'TopicOne',params:{ id:topic.topic_id}}">
             <div class="topic">
@@ -16,9 +16,14 @@ export default {
     props:["topic"],
     methods: {
         Addview(item) {
-            this.$store.commit("addView", item);
+            this.$store.commit("addView",item);
         },
     },
+    computed:{
+        user(){
+            return  this.$store.state.user
+        }
+    }
 }
 </script>
 <style>

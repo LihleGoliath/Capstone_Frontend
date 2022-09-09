@@ -16,11 +16,12 @@ export default {
 </script>
 <style scoped>
     section{
-        background-color: black;
+      
         height: 100vh;
     }
     .container{
         width: 100%;
     height: fit-content;
+    background-color: black;
     }
 </style>

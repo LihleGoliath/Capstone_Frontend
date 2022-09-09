@@ -14,13 +14,17 @@
 
 
        <div>
-   <p class="fw-light text-white fs-3">Views</p>
+   <p class="fw-light text-white fs-3">Suggested Debates Views</p>
            <span class="separate bg-success">
      
            </span>
-           <div class="p-5">
-               <div v-for="view in views" :key="view.topic_id" class="view border rounded">
-                <h1 class="text-white">{{view.Topic}}</h1>
+           <div v-if="view" class="p-5 d-flex">
+            
+               <div v-for="item in view" :key="item.topic" class="view border rounded mx-2 bg-success">
+                <button @click="clearView(item)" class="btn-close "></button>
+                <router-link class="topic" :to="{name:'TopicOne', params:{ id: item.topic_id}}">
+                  <h1 >{{item.Topic}}</h1>
+                </router-link>
                </div>
            </div>
        </div>
@@ -67,9 +71,9 @@
 export default {
     props:["user"],
     computed:{
-        views() {
-            return this.$store.state.views,
-                console.log(this.$store.state.views);
+        view() {
+            return this.$store.state.view
+                console.log(this.$store.state.view)
         },
         token() {
             return this.$store.state.token
@@ -100,6 +104,9 @@ export default {
                 token: this.token
             });
             this.$store.commit("LogOut")
+        },
+        clearView(item){
+          this.$store.commit("DelView",item)
         }
     },
 }
@@ -119,7 +126,7 @@ export default {
     }
     .view{
         width:400px;
-        height: 450px;
+        height:fit-content;
     }
         img{
       width: 100%;
@@ -129,4 +136,13 @@ export default {
   background-color: black;
     height: 100vh;
     }
+    .topic{
+  color: black;
+  text-decoration: none;
+    }
+    .topic:hover{
+    color:white;
+    text-decoration: underline;
+    text-decoration-color:white ;
+ }
 </style>

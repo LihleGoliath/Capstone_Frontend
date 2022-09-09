@@ -40,6 +40,8 @@ methods: {
   text-align: center;
   color: #2c3e50;
   overflow-Y: hidden;
+  background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
+
 }
 
 nav {
@@ -57,5 +59,8 @@ nav a {
   margin:0;
   box-sizing: border-box;
 
+}
+.bg-success{
+  background-color: #51B953;
 }
 </style>

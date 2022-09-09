@@ -23,7 +23,7 @@ export default{
 .about{
   width:100vw ;
   height: 100vh;
-  background-color: black;
+  /* background-color: black; */
 }
 @media only screen and (max-width:420px){
   .about{

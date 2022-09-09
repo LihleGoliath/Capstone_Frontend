@@ -1,13 +1,13 @@
 <template >
   <section id="Landing" class="home  d-flex justify-content-center align-items-center" >
-    <img :src="imageUrl" alt="image" class="img-fluid">
+    <img :src="imageUrl" alt="image" class="img-fluid rounded">
 </section>
 
 <div class="hr d-block bg-success vw-100  ">
   <strong>
    <h1 class="text-white pt-3"> "Freedom is hammered out on the anvil of discussion, dissent, and debate"</h1>
   </strong>
-  <p class="text-white text-end">by Hubert H. Humphrey</p>
+  <p class="text-white text-end mb-0" >by Hubert H. Humphrey</p>
 </div>
 <section id="Login/Register" class="login register d-flex justify-content-center align-items-center ">
     <div class="forms rounded border border-success p-2">
@@ -68,8 +68,8 @@ methods:{
     }
     .login.register{
     height: 80vh;
-    background-color: black;
-    
+    /* background-color: black; */
+    background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
     }
     .forms{
       width: 60vw;
@@ -86,7 +86,8 @@ methods:{
     .home{
       height:100vh;
       width: 100vw;
-      background-color: black;
+      /* background-color: black; */
+      background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
     }
     .about{
       width: 50vw;

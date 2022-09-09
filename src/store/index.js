@@ -1,9 +1,8 @@
 import router from '@/router'
-import { createStore } from 'vuex';
-import vuejs from 'vue';
+import Vuex from 'vuex';
+import  ref from 'vue';
 import createPersistedState from "vuex-persistedstate";
-
-export default createStore({
+export default new Vuex.Store({
   state: {
     users:null,
     user:null,
@@ -12,7 +11,7 @@ export default createStore({
     topic:null,
     comments:null,
     comment:null,
-    views:[],
+    view:[],
     auth:null,
     asc:false
   },
@@ -48,12 +47,12 @@ export default createStore({
      SetComment(state,comment){
       state.comment = comment
      },
-     addView(state,Topic){
-       console.log(Topic);
-      state.views.push(Topic); 
+     addView(state,topic){
+       console.log(topic);
+      state.view.push(topic); 
      },
      DelView(state,view){
-      state.views.splice(view,1) 
+      state.view.splice(view,1) 
      },
      LogOut(state){
       state.user = null,
@@ -104,6 +103,9 @@ export default createStore({
     const UpdatedUser = await res.json();
     console.log(UpdatedUser);
     context.commit("SetUserUpdate",load.Updated)
+    if(UpdatedUser){
+      setTimeout( window.location.reload(),5000)           
+    }
   },
     Login: async (context,payload)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/users/login",{
@@ -222,6 +224,9 @@ export default createStore({
     }) 
     const topic_added = await res.json();
     console.log(topic_added);
+    if(topic_added){
+      setTimeout( window.location.reload(),5000)           
+    }
   },
     ShowTopics:async (context)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/topics",{
@@ -298,6 +303,9 @@ export default createStore({
         }) 
         const comment_added = res.json();
         console.log(comment_added);
+        if(comment_added){
+          setTimeout( window.location.reload(),5000)           
+        }
       },
       delComment:async (context,load)=>{
           const res = await fetch("https://capstone-debate.herokuapp.com/comments/" + load.id,{

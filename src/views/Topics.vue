@@ -63,7 +63,7 @@ sortTopics() {
  </script>
  <style scoped>
     .Topics{
-        background-color: black;
+        /* background-color: black; */
         padding: 5vw;
     }
 
