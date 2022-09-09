@@ -83,6 +83,11 @@ input{
     max-width: 100%;
     padding:10px ;
  }
+ @media only screen and (max-width: 400px){
+    select{
+        width: auto;
+    }
+ }
  .btn:hover{ 
     color: white;
     background-color: black;

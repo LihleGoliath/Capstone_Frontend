@@ -77,8 +77,11 @@ methods:{
       max-height:100% ;
       background-color: black;
       padding: 10;
-    
-    
+    }
+    @media only screen and (max-width: 400px ){
+      .forms{
+        width: auto;
+      }
     }
     .home{
       height:100vh;
