@@ -26,14 +26,14 @@
         </td> 
         <div class="modal fade" :id="`modal${topic.topic_id}`" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="modal-content bg-success">
+      <div class="modal-header bg-white">
+        <h5 class="modal-title" id="exampleModalLabel">Update Topic</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
        <form @submit.prevent="UpdateTopic(topic.topic_id)">
-       <input type="text" name="TopicUpdate" id="TopicUpdate" class="form-control" :placeholder="topic.Topic" v-model="TopicUpdate">
+       <input type="text" name="TopicUpdate" id="TopicUpdate" class="form-control my-3" :placeholder="topic.Topic" v-model="TopicUpdate">
          <button type="submit" class="btn btn-primary">Update</button>
        </form>
       </div>
@@ -99,25 +99,22 @@
     <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    <div class="modal-content bg-success" >
+      <div class="modal-header bg-white">
+        <h5 class="modal-title text-success" id="exampleModalLabel">Add Topic</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-success" >
        <form @submit.prevent="AddTopic">
-       <label for="#topic" class="label text-decoration-underline">Topic Of The Day</label>
+       <label for="#topic" class="label text-decoration-underline text-white fs-3">Topic Of The Day</label>
        <div>
-        <textarea name="Topic" id="topic" cols="30" rows="5" v-model="Topic"></textarea>
-        {{Topic}}
+        <textarea name="Topic" id="topic" cols="30" rows="5" class="form-control my-3" v-model="Topic"></textarea>
+        
        </div>
-         <button class="btn btn-success">Add</button>
+         <button class="btn btn-success border">Add</button>
        </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>

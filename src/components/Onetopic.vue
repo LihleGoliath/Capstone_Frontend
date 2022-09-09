@@ -129,4 +129,16 @@ export default {
         justify-content: space-between;
         width: 40vw;
     }
+        
+    @media only screen and (max-width: 900px ){
+        .box{
+            width: 70vw;
+        }
+    }
+
+    @media only screen and (max-width: 400px ){
+        .box{
+            width: auto;
+        }
+    }
 </style>

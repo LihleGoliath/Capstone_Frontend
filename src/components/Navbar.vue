@@ -17,11 +17,11 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/Contact">Contact</router-link>
         </li>
-        <div v-if="user" class=" d-sm-flex  gap-3">    
+        <div v-if="user" class=" d-flex flex-lg-row flex-column  gap-lg-4">    
          <li class="nav-item">
           <router-link class="nav-link" to="/User">User</router-link>
         </li>
-        <div v-if="user_type === 'admin'" class="mx-5">
+        <div v-if="user_type === 'admin'" class="mx-end ">
           <li class="nav-item">
            <router-link class="nav-link" to="/Admin">Tables</router-link>
          </li>
