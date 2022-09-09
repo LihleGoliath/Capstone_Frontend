@@ -40,7 +40,7 @@
         <form @submit.prevent="Update(user.user_id)">
      <input type="text" name="Username" id="Username" class="form-control p-1 mb-2" v-model="Username" placeholder="Username">
      <input type="text" name="user_image" id="user_image" class="form-control p-1" v-model="user_image" placeholder="Url Image">
-<button type="submit" class="btn btn-success">Update</button>
+<button type="submit" class="btn btn-success mt-3 border">Update</button>
         </form>
       </div>
     </div>
