@@ -20,7 +20,8 @@ export default {
 
     computed:{
         topics() {
-            return this.$store.state.topics;
+            const arrary =  this.$store.state.top_topics
+            return arrary;
         }
     }
 }

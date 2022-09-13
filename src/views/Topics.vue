@@ -55,6 +55,7 @@ import ShowTopics from '@/components/ShowTopics.vue';
         },
 sortTopics() {
             this.$store.commit("sortTopicsByIndex");
+     
         }
 
     },

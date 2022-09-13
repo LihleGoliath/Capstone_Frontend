@@ -69,8 +69,10 @@ methods:{
     .login.register{
     height: 80vh;
     /* background-color: black; */
-    background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
-    }
+    /* background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e); */
+    background-image: linear-gradient(to top, #2a482f, #2e6c36, #339139, #3cb835, #14e633);
+    
+  }
     .forms{
       width: 60vw;
       height: fit-content;
@@ -87,7 +89,7 @@ methods:{
       height:100vh;
       width: 100vw;
       /* background-color: black; */
-      background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
+      /* background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e); */
     }
     .about{
       width: 50vw;

@@ -8,6 +8,7 @@ export default new Vuex.Store({
     user:null,
     token:null,
     topics:null,
+    top_topics:null,
     topic:null,
     comments:null,
     comment:null,
@@ -37,6 +38,9 @@ export default new Vuex.Store({
      },
      SetTopics(state,topics){
       state.topics = topics
+     },
+     SetTopics_top(state,topics){
+      state.top_topics = topics.reverse().slice(0,3)
      },
      SetTopic(state,topic){
       state.topic = topic
@@ -238,6 +242,8 @@ export default new Vuex.Store({
       const topicsArray = await res.json();
       console.log(topicsArray);
       context.commit("SetTopics",topicsArray);
+      context.commit("SetTopics_top",topicsArray);
+
     },
     GetTopic:async (context,id)=>{
       const res = await fetch("https://capstone-debate.herokuapp.com/topics/" + id,{

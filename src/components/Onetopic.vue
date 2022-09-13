@@ -82,7 +82,9 @@ export default {
                 .then(res => res.json())
                 .then(vote_added => {
                 console.log(vote_added);
-                //  window.location.reload();
+                if(vote_added){
+                     window.location.reload();
+                }
             });
         },
         AddVote1: async (context, payload, id) => {
@@ -98,7 +100,9 @@ export default {
                 .then(res => res.json())
                 .then(vote1_added => {
                 console.log(vote1_added);
-                // window.location.reload();
+                if(vote1_added){
+                    window.location.reload();
+                }
             });
         }
     }

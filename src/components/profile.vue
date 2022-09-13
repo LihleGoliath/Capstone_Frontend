@@ -133,7 +133,7 @@ export default {
       height: 100%;
     }
     .div1{
-  background-color: black;
+      background-image: linear-gradient(to top, #2a482f, #305933, #376a37, #407b39, #4b8d39);
     height: 100vh;
     }
     .topic{

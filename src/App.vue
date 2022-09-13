@@ -40,8 +40,8 @@ methods: {
   text-align: center;
   color: #2c3e50;
   overflow-Y: hidden;
-  background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e);
-
+  /* background-image: linear-gradient(to left top, #338648, #307e40, #2d7639, #2a6f31, #27672a, #296529, #2b6329, #2d6128, #34642d, #3b6733, #426a38, #486d3e); */
+  background-image: linear-gradient(to top, #2a482f, #2e6c36, #339139, #3cb835, #4de027);
 }
 
 nav {
