@@ -49,7 +49,7 @@
         </div>
 
         <span class="divide d-block bg-success my-5"></span>
-        <button @click="Look">Token</button>
+     
         <H1 class="text-white">Users</H1>
 
         <div v-if="Debaters">
