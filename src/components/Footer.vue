@@ -15,16 +15,16 @@
                     <p>by Lihle</p>
                 </div>
                 <div class="col-md-4 text-white d-flex justify-content-center gap-3">
-                    <a href="http://">
+                    <a href="https://github.com/LihleGoliath">
                         <p><i class="fa-brands fa-square-github   fs-3 bg-success p-1 border rounded-circle"></i></p> 
                     </a>
-                    <a href="http://">
+                    <a href="https://codepen.io/lihlegoliath">
                         <p><i class="fa-brands fa-codepen  fs-3 bg-success p-1 border rounded-circle"></i></p> 
                     </a>
-                    <a href="http://">
+                    <a href="https://www.linkedin.com/in/lihle-goliath-355921244/">
                         <p><i class="fa-brands fa-linkedin  fs-3 bg-success p-1 border rounded-circle"></i></p>
                     </a>
-                    <a href="http://">
+                    <a href="https://testing-aa4e2.firebaseapp.com/">
                         <p><i class="fa-solid fa-diagram-project fs-3 bg-success p-1 border rounded-circle"></i></p> 
                     </a>
                 </div>
